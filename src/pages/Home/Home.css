@@ -1,32 +1,37 @@
-.banner{
-    background-image: url(../../assets/Home\ Banner.png);
-    background-size:cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 400px;
-    width: 100%;
-    border: 1px solid red;
+.banner {
+  background-image: url(../../assets/Home\ Banner.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 400px;
+  width: 100%;
+  /* border: 1px solid red; */
 
-    position: relative;
+  position: relative;
 }
 
-.cta{
-   
+.cta {
+  background-color: var(--red);
+  color: var(--paper);
+  padding: 8px 16px;
+  text-decoration: none;
+  font-weight: 600;
 
-    background-color: var(--red);
-    color: var(--paper);
-    padding: 8px 16px;
-    text-decoration: none;
-    font-weight: 600;
-
-    font-family: var(--heading-font);
-    border: 2px solid var(--yellow);
+  font-family: var(--heading-font);
+  border: 2px solid var(--yellow);
 }
-.cta-wrapper{
-    position: absolute;
-    left: 15%;
-    bottom: 15%;
-    padding: 4px;
-    background-color: var(--red);
-    border: 2px solid var(--yellow); 
+.cta-wrapper {
+  position: absolute;
+  left: 15%;
+  bottom: 15%;
+  padding: 4px;
+  background-color: var(--red);
+  border: 2px solid var(--yellow);
+}
+.product-row{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
 }
