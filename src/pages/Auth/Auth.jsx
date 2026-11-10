@@ -172,7 +172,7 @@ function LoginForm() {
       <button className="submit-btn" type="submit">
         LOGIN
       </button>
-      {errorMsg && <p className="form-error" role="alert">{errorMsg}</p>}
+      {errorMsg ? <p className="form-error" role="alert">{errorMsg}</p> :null}
     </form>
   );
 }
