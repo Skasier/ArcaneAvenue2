@@ -1,7 +1,5 @@
-import './SellerD'
+import "./SellerD";
 
-function SellerD(){
-
-}
+function SellerD() {}
 
 export default SellerD;

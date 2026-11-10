@@ -40,6 +40,8 @@ function RegisterForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [accountType, setAccountType] = useState("buyer");
+
   const [errorMsg, setErrorMsg] = useState("");
 
   function handleSubmit(event) {
@@ -62,10 +64,11 @@ function RegisterForm() {
     const dataToSend = {
       email: email,
       password: password,
-      account_type: "buyer"
-    }
+      account_type: accountType,
+    };
 
-    axios.post(endpoint_url, dataToSend)
+    axios
+      .post(endpoint_url, dataToSend)
       .then(handleRegisterResponse)
       .catch(handleRegisterError);
   }
@@ -110,11 +113,25 @@ function RegisterForm() {
         <div className="button-cont">
           <label className="toggle" htmlFor="btoggle">
             <span>Buyer</span>
-            <input type="radio" id="btoggle" className="btoggle" name="selector"  defaultChecked/>
+            <input
+              type="radio"
+              id="btoggle"
+              className="btoggle"
+              name="selector"
+              checked={accountType === "buyer"}
+              onChange={() => setAccountType("buyer")}
+            />
           </label>
           <label className="toggle" htmlFor="stoggle">
             <span>Seller</span>
-            <input type="radio" id="stoggle" className="stoggle" name="selector" />
+            <input
+              type="radio"
+              id="stoggle"
+              className="stoggle"
+              name="selector"
+              checked={accountType === "seller"}
+              onChange={() => setAccountType("seller")}
+            />
           </label>
         </div>
       </div>
@@ -122,7 +139,11 @@ function RegisterForm() {
       <button className="submit-btn" type="submit">
         REGISTER
       </button>
-      {errorMsg && <p className="form-error" role="alert">{errorMsg}</p>}
+      {errorMsg ? (
+        <p className="form-error" role="alert">
+          {errorMsg}
+        </p>
+      ) : null}
     </form>
   );
 }
@@ -136,7 +157,8 @@ function LoginForm() {
     event.preventDefault();
     setErrorMsg("");
 
-    axios.post("http://localhost:8001/auth/login", { email, password })
+    axios
+      .post("http://localhost:8001/auth/login", { email, password })
       .then((response) => {
         console.log(response.data);
       })
@@ -172,7 +194,11 @@ function LoginForm() {
       <button className="submit-btn" type="submit">
         LOGIN
       </button>
-      {errorMsg ? <p className="form-error" role="alert">{errorMsg}</p> :null}
+      {errorMsg ? (
+        <p className="form-error" role="alert">
+          {errorMsg}
+        </p>
+      ) : null}
     </form>
   );
 }

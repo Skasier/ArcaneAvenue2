@@ -11,7 +11,9 @@ export default function SectionDivider({ text, link }) {
     return (
       <>
         <div className="div-line" />
-        <NavLink className="div-link" to={link}>View All</NavLink>
+        <NavLink className="div-link" to={link}>
+          View All
+        </NavLink>
         <div className="div-line short" />
       </>
     );
@@ -29,9 +31,7 @@ export default function SectionDivider({ text, link }) {
         <img src={Star} alt="" />
       </div>
 
-      <div className="divider-col">
-        {link ? drawWithLink() : drawLine()}
-      </div>
+      <div className="divider-col">{link ? drawWithLink() : drawLine()}</div>
     </div>
   );
 }

@@ -9,7 +9,9 @@
   font-family: var(--heading-font);
   background: #fff;
   border: 1px solid var(--red);
-  transition: transform 0.1s ease-in-out, box-shadow 0.2s ease;
+  transition:
+    transform 0.1s ease-in-out,
+    box-shadow 0.2s ease;
 }
 
 .product-card:hover {
