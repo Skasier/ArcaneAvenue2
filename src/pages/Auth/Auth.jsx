@@ -2,6 +2,8 @@ import "./Auth.css";
 import { useState } from "react";
 import Banner from "../../assets/Home Banner.png";
 
+import axios from "axios";
+
 export default function Auth() {
   const [selectedForm, setSelectedForm] = useState("register");
 
@@ -44,12 +46,28 @@ function RegisterForm() {
     event.preventDefault();
     setErrorMsg("");
 
+    function handleRegisterResponse(response) {
+      console.log(response);
+    }
+    function handleRegisterError(error) {
+      setErrorMsg(error?.response?.data?.detail || "Unknown Error");
+    }
+
     if (password !== confirmPassword) {
       setErrorMsg("Passwords do not match");
       return;
     }
 
-    alert("form submitted");
+    const endpoint_url = "http://localhost:8001/auth/register";
+    const dataToSend = {
+      email: email,
+      password: password,
+      account_type: "buyer"
+    }
+
+    axios.post(endpoint_url, dataToSend)
+      .then(handleRegisterResponse)
+      .catch(handleRegisterError);
   }
 
   return (
@@ -110,26 +128,51 @@ function RegisterForm() {
 }
 
 function LoginForm() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+
   function handleSubmit(event) {
     event.preventDefault();
-    alert("form submitted");
+    setErrorMsg("");
+
+    axios.post("http://localhost:8001/auth/login", { email, password })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        setErrorMsg(error?.response?.data?.detail || "Unknown Error");
+      });
   }
 
   return (
     <form className="auth-form" onSubmit={handleSubmit}>
       <div className="form-field ">
         <label>Email</label>
-        <input type="email" placeholder="Enter your email..." required />
+        <input
+          type="email"
+          placeholder="Enter your email..."
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+          required
+        />
       </div>
 
       <div className="form-field">
         <label>Password</label>
-        <input type="password" placeholder="Enter your password..." required />
+        <input
+          type="password"
+          placeholder="Enter your password..."
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+          required
+        />
       </div>
 
       <button className="submit-btn" type="submit">
         LOGIN
       </button>
+      {errorMsg && <p className="form-error" role="alert">{errorMsg}</p>}
     </form>
   );
 }
