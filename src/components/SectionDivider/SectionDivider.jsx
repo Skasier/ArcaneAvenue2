@@ -7,15 +7,14 @@ export default function SectionDivider({ text, link }) {
     return <div className="div-line" />;
   }
 
-  function draWithLink() {
-    return(
-        <>
-        <div className="div-line"/>
-        <NavLink className='div-link' to={link}>View All</NavLink>
-        <div className="div-line short"/>
-
-        </>
-    )
+  function drawWithLink() {
+    return (
+      <>
+        <div className="div-line" />
+        <NavLink className="div-link" to={link}>View All</NavLink>
+        <div className="div-line short" />
+      </>
+    );
   }
 
   return (
@@ -31,7 +30,7 @@ export default function SectionDivider({ text, link }) {
       </div>
 
       <div className="divider-col">
-        {link ? draWithLink() : drawLine()}
+        {link ? drawWithLink() : drawLine()}
       </div>
     </div>
   );

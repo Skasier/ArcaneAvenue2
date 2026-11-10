@@ -18,6 +18,7 @@
   align-items: center;
   gap: 16px;
   font-family: var(--heading-font);
+  text-align: center;
   >img {
     width: 40px;
   }

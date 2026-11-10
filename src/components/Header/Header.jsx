@@ -24,7 +24,6 @@ export default function Header() {
                 <div className="header-right">
 
                     <nav className="header-actions">
-                        {/* <NavLink to='auth' className='header-btn'></NavLink> */}
                         <NavLink to="auth" className="header-btn">ACCOUNT</NavLink>
                         <NavLink to="wishlist" className="header-btn">WISHILIST</NavLink>
                         <button className="header-btn">cart ( 0 )</button>

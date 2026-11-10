@@ -171,6 +171,11 @@
   font-family: var(--heading-font);
   font-weight: 700;
 }
+.type-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 .type-toggle .button-cont {
   display: flex;
   justify-content: center;
@@ -206,4 +211,9 @@
 }
 .type-toggle .button-cont label:has(input:checked) span {
   color: var(--paper);
+}
+.form-error {
+  margin: 0;
+  color: var(--red);
+  font-size: 14px;
 }
